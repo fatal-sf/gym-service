@@ -9,17 +9,17 @@ import lombok.Data;
 public class TrainerDTO {
     private Long id;
 
-    @NotBlank(message = "Full name is required")
-    @Size(max = 100, message = "Full name must be less than 100 characters")
+    @NotBlank(message = "Полное имя обязательно")
+    @Size(max = 100, message = "Полное имя должно быть менее 100 символов")
     private String fullName;
 
-    @NotBlank(message = "Specialization is required")
-    @Size(max = 100, message = "Specialization must be less than 100 characters")
+    @NotBlank(message = "Требуется специализация")
+    @Size(max = 100, message = "Специализация должна быть менее 100 символов.")
     private String specialization;
 
-    @Size(max = 20, message = "Phone must be less than 20 characters")
+    @Size(max = 20, message = "Телефон должен быть короче 20 символов")
     private String phone;
 
-    @Size(max = 100, message = "Email must be less than 100 characters")
+    @Size(max = 100, message = "Электронная почта должна содержать менее 100 символов.")
     private String email;
 }

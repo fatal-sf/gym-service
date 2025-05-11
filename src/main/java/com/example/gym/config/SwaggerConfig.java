@@ -9,14 +9,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+    /**
+     * Конфигурация swagger
+     */
     @Bean
     public OpenAPI gymBookingOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Gym Booking Service API")
-                        .description("API for managing gym training sessions")
+                .info(new Info().title("API сервиса записи на тренировки в спортзал")
+                        .description("API сервиса записи на тренировки в спортзал")
                         .version("v1.0")
                         .contact(new Contact()
-                                .name("Gym Support")
+                                .name("ООО Спортзал")
                                 .email("support@gym.com"))
                         .license(new License()
                                 .name("Apache 2.0")

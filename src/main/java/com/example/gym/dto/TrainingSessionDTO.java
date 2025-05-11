@@ -10,20 +10,20 @@ import java.time.LocalDateTime;
 public class TrainingSessionDTO {
     private Long id;
 
-    @NotNull(message = "Trainer ID is required")
+    @NotNull(message = "Требуется идентификатор тренера")
     private Long trainerId;
 
-    @NotNull(message = "Client ID is required")
+    @NotNull(message = "Требуется идентификатор клиента")
     private Integer clientId;
 
-    @NotNull(message = "Training type ID is required")
+    @NotNull(message = "Требуется идентификатор тренировки")
     private Long trainingTypeId;
 
-    @Future(message = "Start time must be in the future")
-    @NotNull(message = "Start time is required")
+    @Future(message = "Время начала тренировки должно быть в будущем")
+    @NotNull(message = "Требуется время тренировки")
     private LocalDateTime startTime;
 
-    @Positive(message = "Duration must be positive")
-    @NotNull(message = "Duration is required")
+    @Positive(message = "Длительность должна быть положительной")
+    @NotNull(message = "Требуется продолжительность")
     private Integer durationMinutes;
 }

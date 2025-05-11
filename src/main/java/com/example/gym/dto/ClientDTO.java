@@ -9,13 +9,13 @@ import lombok.Data;
 public class ClientDTO {
     private Integer id;
 
-    @NotBlank(message = "Name is mandatory")
+    @NotBlank(message = "Имя обязательно")
     private String name;
 
-    @Email(message = "Email should be valid")
+    @Email(message = "Некорректный формат email. Ожидается email в формате ivanov@example.com")
     private String email;
 
-    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Phone number should be valid")
+    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Телефон должен быть в формате +7XXXYYYYYYY")
     private String phone;
 
     private Boolean isActive;

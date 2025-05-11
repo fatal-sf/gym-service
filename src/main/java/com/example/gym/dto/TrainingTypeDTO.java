@@ -8,10 +8,10 @@ import lombok.Data;
 public class TrainingTypeDTO {
     private Long id;
 
-    @NotBlank(message = "Name is required")
-    @Size(max = 100, message = "Name must be less than 100 characters")
+    @NotBlank(message = "Имя обязательно")
+    @Size(max = 100, message = "Имя должно быть менее 100 символов")
     private String name;
 
-    @Size(max = 500, message = "Description must be less than 500 characters")
+    @Size(max = 500, message = "Описание должно быть менее 500 символов")
     private String description;
 }

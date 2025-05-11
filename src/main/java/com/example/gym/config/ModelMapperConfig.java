@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ModelMapperConfig {
+    /**
+     * Конфигурация маппера для преобразования между сущностями и DTO
+     */
 
     @Bean
     public ModelMapper modelMapper() {

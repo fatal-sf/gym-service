@@ -16,17 +16,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/clients")
 @RequiredArgsConstructor
-@Tag(name = "Client Management", description = "Operations related to client management")
+@Tag(name = "Управление клиентами", description = "API для управления клиентами тренажерного зала")
 public class ClientController {
 
     private final ClientService clientService;
 
     @Operation(
-            summary = "Get all active clients",
-            description = "Retrieves a list of all currently active clients",
+            summary = "Получить всех активных клиентов",
+            description = "Возвращает список всех активных клиентов",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Successfully retrieved list of clients"),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
+                    @ApiResponse(responseCode = "200", description = "Успешно получен список клиентов"),
+                    @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
             }
     )
     @GetMapping
@@ -35,12 +35,12 @@ public class ClientController {
     }
 
     @Operation(
-            summary = "Get client by ID",
-            description = "Retrieves client details by their unique identifier",
+            summary = "Получить клиента по его идентификатору",
+            description = "Возвращает клиента по его идентификатору",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Client found and returned"),
-                    @ApiResponse(responseCode = "404", description = "Client not found"),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
+                    @ApiResponse(responseCode = "200", description = "Клиент найден и получен"),
+                    @ApiResponse(responseCode = "404", description = "Клиент не найден"),
+                    @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
             }
     )
     @GetMapping("/{id}")
@@ -49,12 +49,12 @@ public class ClientController {
     }
 
     @Operation(
-            summary = "Register new client",
-            description = "Creates a new client record in the system",
+            summary = "Регистрация нового клиента",
+            description = "Создает запись о клиенте в системе",
             responses = {
-                    @ApiResponse(responseCode = "201", description = "Client successfully created"),
-                    @ApiResponse(responseCode = "400", description = "Invalid input data"),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
+                    @ApiResponse(responseCode = "201", description = "Клиент успешно создан"),
+                    @ApiResponse(responseCode = "400", description = "Неверные входные данные"),
+                    @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
             }
     )
     @PostMapping
@@ -63,13 +63,13 @@ public class ClientController {
     }
 
     @Operation(
-            summary = "Update client information",
-            description = "Updates existing client details",
+            summary = "Обновление информации о клиенте",
+            description = "Обновляет данные существующих клиентов",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Client successfully updated"),
-                    @ApiResponse(responseCode = "400", description = "Invalid input data"),
-                    @ApiResponse(responseCode = "404", description = "Client not found"),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
+                    @ApiResponse(responseCode = "200", description = "Клиент успешно обновлен"),
+                    @ApiResponse(responseCode = "400", description = "Неверные входные данные"),
+                    @ApiResponse(responseCode = "404", description = "Клиент не найден"),
+                    @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
             }
     )
     @PutMapping("/{id}")
@@ -80,12 +80,12 @@ public class ClientController {
     }
 
     @Operation(
-            summary = "Deactivate client",
-            description = "Marks a client as inactive in the system (soft delete)",
+            summary = "Деактивировать клиента",
+            description = "Отмечает клиента как неактивного в системе (soft delete)",
             responses = {
-                    @ApiResponse(responseCode = "204", description = "Client successfully deactivated"),
-                    @ApiResponse(responseCode = "404", description = "Client not found"),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
+                    @ApiResponse(responseCode = "204", description = "Клиент успешно деактивирован"),
+                    @ApiResponse(responseCode = "404", description = "Клиент не найден"),
+                    @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
             }
     )
     @DeleteMapping("/{id}")
@@ -95,11 +95,11 @@ public class ClientController {
     }
 
     @Operation(
-            summary = "Search clients",
-            description = "Searches clients by name or email with partial matching",
+            summary = "Поиск клиентов",
+            description = "Поиск клиентов по имени или адресу электронной почты с частичным совпадением",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Search results returned"),
-                    @ApiResponse(responseCode = "500", description = "Internal server error")
+                    @ApiResponse(responseCode = "200", description = "Результаты поиска возвращены"),
+                    @ApiResponse(responseCode = "500", description = "Внутренняя ошибка сервера")
             }
     )
     @GetMapping("/search")

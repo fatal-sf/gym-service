@@ -15,31 +15,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/trainers")
 @RequiredArgsConstructor
-@Tag(name = "Trainer Management", description = "APIs for managing trainers")
+@Tag(name = "Управление тренерами", description = "API для управления тренерами тренажерного зала")
 public class TrainerController {
     private final TrainerService trainerService;
 
 
     @GetMapping
-    @Operation(summary = "Get all active trainers")
+    @Operation(summary = "Получить всех активных тренеров")
     public ResponseEntity<List<TrainerDTO>> getAllTrainers() {
         return ResponseEntity.ok(trainerService.getAllActiveTrainers());
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Get trainer by ID")
+    @Operation(summary = "Получить тренера по ID")
     public ResponseEntity<TrainerDTO> getTrainerById(@PathVariable Long id) {
         return ResponseEntity.ok(trainerService.getTrainerById(id));
     }
 
     @PostMapping
-    @Operation(summary = "Create a new trainer")
+    @Operation(summary = "Создать нового тренера")
     public ResponseEntity<TrainerDTO> createTrainer(@Valid @RequestBody TrainerDTO trainerDTO) {
         return new ResponseEntity<>(trainerService.createTrainer(trainerDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Update trainer information")
+    @Operation(summary = "Обновить информацию о тренере")
     public ResponseEntity<TrainerDTO> updateTrainer(
             @PathVariable Long id,
             @Valid @RequestBody TrainerDTO trainerDTO) {
@@ -47,7 +47,7 @@ public class TrainerController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Deactivate trainer")
+    @Operation(summary = "Деактивировать тренера")
     public ResponseEntity<Void> deactivateTrainer(@PathVariable Long id) {
         trainerService.deactivateTrainer(id);
         return ResponseEntity.noContent().build();
