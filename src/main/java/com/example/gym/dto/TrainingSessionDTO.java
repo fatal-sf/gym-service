@@ -14,7 +14,7 @@ public class TrainingSessionDTO {
     private Long trainerId;
 
     @NotNull(message = "Client ID is required")
-    private Long clientId;
+    private Integer clientId;
 
     @NotNull(message = "Training type ID is required")
     private Long trainingTypeId;
