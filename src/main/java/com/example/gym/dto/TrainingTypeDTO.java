@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class TrainingTypeDTO {
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Имя обязательно")
     @Size(max = 100, message = "Имя должно быть менее 100 символов")

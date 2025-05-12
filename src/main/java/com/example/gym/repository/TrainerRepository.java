@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TrainerRepository extends JpaRepository<Trainer, Long> {
+public interface TrainerRepository extends JpaRepository<Trainer, Integer> {
 
     @Query("SELECT t FROM Trainer t WHERE t.id = :id AND t.isActive = true")
-    Optional<Trainer> findByIdAndIsActiveTrue(@Param("id") Long id);
+    Optional<Trainer> findByIdAndIsActiveTrue(@Param("id") Integer id);
 
     @Query("SELECT t FROM Trainer t WHERE t.isActive = true")
     List<Trainer> findAllActive();

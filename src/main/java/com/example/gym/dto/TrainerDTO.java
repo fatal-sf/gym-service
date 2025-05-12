@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class TrainerDTO {
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "Полное имя обязательно")
     @Size(max = 100, message = "Полное имя должно быть менее 100 символов")
@@ -22,4 +22,6 @@ public class TrainerDTO {
 
     @Size(max = 100, message = "Электронная почта должна содержать менее 100 символов.")
     private String email;
+
+    private Boolean isActive;
 }

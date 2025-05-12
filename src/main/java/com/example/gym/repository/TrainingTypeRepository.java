@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TrainingTypeRepository extends JpaRepository<TrainingType, Long> {
+public interface TrainingTypeRepository extends JpaRepository<TrainingType, Integer> {
     List<TrainingType> findByIsActiveTrue();
 }

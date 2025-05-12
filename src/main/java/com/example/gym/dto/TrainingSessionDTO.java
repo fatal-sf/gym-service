@@ -8,16 +8,16 @@ import java.time.LocalDateTime;
 
 @Data
 public class TrainingSessionDTO {
-    private Long id;
+    private Integer id;
 
     @NotNull(message = "Требуется идентификатор тренера")
-    private Long trainerId;
+    private Integer trainerId;
 
     @NotNull(message = "Требуется идентификатор клиента")
     private Integer clientId;
 
     @NotNull(message = "Требуется идентификатор тренировки")
-    private Long trainingTypeId;
+    private Integer trainingTypeId;
 
     @Future(message = "Время начала тренировки должно быть в будущем")
     @NotNull(message = "Требуется время тренировки")
