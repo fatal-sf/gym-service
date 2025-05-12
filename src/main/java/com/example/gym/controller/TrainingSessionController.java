@@ -27,7 +27,7 @@ public class TrainingSessionController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Получить тренировку по ее идентификатору")
-    public ResponseEntity<TrainingSessionDTO> getSessionById(@PathVariable Long id) {
+    public ResponseEntity<TrainingSessionDTO> getSessionById(@PathVariable Integer id) {
         return ResponseEntity.ok(sessionService.getSessionById(id));
     }
 
@@ -40,20 +40,20 @@ public class TrainingSessionController {
 
     @PatchMapping("/{id}/cancel")
     @Operation(summary = "Отменить тренировку")
-    public ResponseEntity<Void> cancelSession(@PathVariable Long id) {
+    public ResponseEntity<Void> cancelSession(@PathVariable Integer id) {
         sessionService.cancelSession(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/client/{clientId}")
     @Operation(summary = "Получить тренировки клиента")
-    public ResponseEntity<List<TrainingSessionDTO>> getClientSessions(@PathVariable Long clientId) {
+    public ResponseEntity<List<TrainingSessionDTO>> getClientSessions(@PathVariable Integer clientId) {
         return ResponseEntity.ok(sessionService.getClientSessions(clientId));
     }
 
     @GetMapping("/trainer/{trainerId}")
     @Operation(summary = "Получить тренировки тренера")
-    public ResponseEntity<List<TrainingSessionDTO>> getTrainerSessions(@PathVariable Long trainerId) {
+    public ResponseEntity<List<TrainingSessionDTO>> getTrainerSessions(@PathVariable Integer trainerId) {
         return ResponseEntity.ok(sessionService.getTrainerSessions(trainerId));
     }
 }

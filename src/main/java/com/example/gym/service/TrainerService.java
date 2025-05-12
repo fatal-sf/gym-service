@@ -24,7 +24,7 @@ public class TrainerService {
                 .collect(Collectors.toList());
     }
 
-    public TrainerDTO getTrainerById(Long id) {
+    public TrainerDTO getTrainerById(Integer id) {
         Trainer trainer = trainerRepository.findByIdAndIsActiveTrue(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trainer not found with id: " + id));
         return modelMapper.map(trainer, TrainerDTO.class);
@@ -33,13 +33,14 @@ public class TrainerService {
     @Transactional
     public TrainerDTO createTrainer(TrainerDTO trainerDTO) {
         Trainer trainer = modelMapper.map(trainerDTO, Trainer.class);
+        trainer.setId(null);
         trainer.setIsActive(true);
         Trainer savedTrainer = trainerRepository.save(trainer);
         return modelMapper.map(savedTrainer, TrainerDTO.class);
     }
 
     @Transactional
-    public TrainerDTO updateTrainer(Long id, TrainerDTO trainerDTO) {
+    public TrainerDTO updateTrainer(Integer id, TrainerDTO trainerDTO) {
         Trainer existingTrainer = trainerRepository.findByIdAndIsActiveTrue(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trainer not found with id: " + id));
 
@@ -49,7 +50,7 @@ public class TrainerService {
     }
 
     @Transactional
-    public void deactivateTrainer(Long id) {
+    public void deactivateTrainer(Integer id) {
         Trainer trainer = trainerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Trainer not found with id: " + id));
         trainer.setIsActive(false);

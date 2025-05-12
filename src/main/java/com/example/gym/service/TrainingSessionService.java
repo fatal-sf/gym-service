@@ -28,7 +28,7 @@ public class TrainingSessionService {
                 .collect(Collectors.toList());
     }
 
-    public TrainingSessionDTO getSessionById(Long id) {
+    public TrainingSessionDTO getSessionById(Integer id) {
         TrainingSession session = sessionRepository.findByIdAndIsCancelledFalse(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Session not found"));
         return convertToDto(session);
@@ -48,6 +48,7 @@ public class TrainingSessionService {
         }
 
         TrainingSession session = modelMapper.map(sessionDTO, TrainingSession.class);
+        session.setId(null);
         session.setTrainer(trainerRepository.findById(sessionDTO.getTrainerId())
                 .orElseThrow(() -> new ResourceNotFoundException("Trainer not found")));
         session.setClient(clientRepository.findById(sessionDTO.getClientId())
@@ -62,21 +63,21 @@ public class TrainingSessionService {
         return modelMapper.map(session, TrainingSessionDTO.class);
     }
     @Transactional
-    public void cancelSession(Long sessionId) {
+    public void cancelSession(Integer sessionId) {
         TrainingSession session = sessionRepository.findById(sessionId)
                 .orElseThrow(() -> new ResourceNotFoundException("Session not found"));
         session.setIsCancelled(true);
         sessionRepository.save(session);
     }
 
-    public List<TrainingSessionDTO> getClientSessions(Long clientId) {
+    public List<TrainingSessionDTO> getClientSessions(Integer clientId) {
         return sessionRepository.findByClientId(clientId).stream()
                 .filter(session -> !session.getIsCancelled())
                 .map(this::convertToDto)
                 .toList();
     }
 
-    public List<TrainingSessionDTO> getTrainerSessions(Long trainerId) {
+    public List<TrainingSessionDTO> getTrainerSessions(Integer trainerId) {
         return sessionRepository.findByTrainerId(trainerId).stream()
                 .filter(session -> !session.getIsCancelled())
                 .map(this::convertToDto)

@@ -1,12 +1,13 @@
 package com.example.gym.model;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor (access = AccessLevel.PUBLIC)
 @Entity
 @Table(name = "training_sessions")
 public class TrainingSession {

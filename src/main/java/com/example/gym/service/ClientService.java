@@ -36,6 +36,7 @@ public class ClientService {
     @Transactional
     public ClientDTO createClient(ClientDTO clientDTO) {
         Client client = modelMapper.map(clientDTO, Client.class);
+        client.setId(null);
         client.setIsActive(true);
         Client savedClient = clientRepository.save(client);
         return modelMapper.map(savedClient, ClientDTO.class);
