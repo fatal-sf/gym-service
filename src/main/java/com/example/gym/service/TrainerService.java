@@ -33,6 +33,7 @@ public class TrainerService {
     @Transactional
     public TrainerDTO createTrainer(TrainerDTO trainerDTO) {
         Trainer trainer = modelMapper.map(trainerDTO, Trainer.class);
+        trainer.setId(null);
         trainer.setIsActive(true);
         Trainer savedTrainer = trainerRepository.save(trainer);
         return modelMapper.map(savedTrainer, TrainerDTO.class);

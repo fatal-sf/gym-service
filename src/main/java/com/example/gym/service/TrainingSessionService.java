@@ -48,6 +48,7 @@ public class TrainingSessionService {
         }
 
         TrainingSession session = modelMapper.map(sessionDTO, TrainingSession.class);
+        session.setId(null);
         session.setTrainer(trainerRepository.findById(sessionDTO.getTrainerId())
                 .orElseThrow(() -> new ResourceNotFoundException("Trainer not found")));
         session.setClient(clientRepository.findById(sessionDTO.getClientId())
